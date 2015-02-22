@@ -15,6 +15,13 @@ namespace AuditedRepository.Interfaces.Repositories
     public interface IRepository<T> where T : IEntity
     {
         /// <summary>
+        /// Check if a query returns any entities
+        /// </summary>
+        /// <param name="query">Filter query</param>
+        /// <returns>Any entities returned</returns>
+        bool Any(Expression<Func<T, bool>> query = null);
+
+        /// <summary>
         /// Find all relevant entities
         /// </summary>
         /// <param name="filter">Filter query</param>
