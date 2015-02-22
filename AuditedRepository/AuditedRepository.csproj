@@ -42,6 +42,8 @@
     <Compile Include="Interfaces\Models\IEntity.cs" />
     <Compile Include="Interfaces\Models\IMaintenanceProperties.cs" />
     <Compile Include="Interfaces\Repositories\IRepository.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\MaintenanceProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
