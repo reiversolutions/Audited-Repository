@@ -42,8 +42,9 @@ namespace AuditedRepository.Interfaces.Repositories
         /// Find specific entity
         /// </summary>
         /// <param name="id">Primary key identifier</param>
+        /// <param name="bypassArchived">Ignore the archive filter</param>
         /// <returns>Entity</returns>
-        T FindById(string id);
+        T FindById(string id, bool bypassArchived = false);
 
         /// <summary>
         /// Insert a entity into the database
