@@ -11,7 +11,7 @@ namespace AuditedRepository.Interfaces.Repositories
     /// <summary>
     /// Generic Repository
     /// </summary>
-    /// <typeparam name="T">Enity implementing IEnity</typeparam>
+    /// <typeparam name="T">Entity implementing IEntity</typeparam>
     public interface IRepository<T> where T : IEntity
     {
         /// <summary>
