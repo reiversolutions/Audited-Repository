@@ -1,4 +1,5 @@
-﻿using AuditedRepository.Interfaces.Models;
+﻿using AuditedRepository.Enums;
+using AuditedRepository.Interfaces.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace AuditedRepository.Interfaces.Parsers
 {
     public interface IParser<T> where T : class, IEntity
     {
+        IAuditEntity Parse(T entity, AuditAction auditAction);
+
         string Parse(T entity);
     }
 }
