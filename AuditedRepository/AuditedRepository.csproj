@@ -43,6 +43,7 @@
     <Compile Include="Interfaces\Models\IAuditEntity.cs" />
     <Compile Include="Interfaces\Models\IEntity.cs" />
     <Compile Include="Interfaces\Models\IMaintenanceProperties.cs" />
+    <Compile Include="Interfaces\Parsers\IParser.cs" />
     <Compile Include="Interfaces\Repositories\IRepository.cs" />
     <Compile Include="Models\AuditEntity.cs" />
     <Compile Include="Models\Entity.cs" />
