@@ -12,7 +12,7 @@ namespace AuditedRepository.Interfaces.Repositories
     /// Generic Repository
     /// </summary>
     /// <typeparam name="T">Entity implementing IEntity</typeparam>
-    public interface IRepository<T> where T : IEntity
+    public interface IRepository<T> where T : class, IEntity
     {
         /// <summary>
         /// Check if a query returns any entities
