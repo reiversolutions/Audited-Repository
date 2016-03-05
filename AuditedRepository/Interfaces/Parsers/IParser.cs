@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AuditedRepository.Interfaces.Parsers
 {
-    public interface IParser<T> where T : class, IEntity
+    public interface IParser<T> where T : IEntity
     {
         IAuditEntity Parse(T entity, AuditAction auditAction);
 

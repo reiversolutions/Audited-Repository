@@ -10,7 +10,7 @@ using AuditedRepository.Models;
 
 namespace AuditedRepository.Parsers
 {
-    public abstract class ParserBase<T> : IParser<T> where T : class, IEntity
+    public abstract class ParserBase<T> : IParser<T> where T : IEntity
     {
         public IAuditEntity Parse(T entity, AuditAction auditAction)
         {
