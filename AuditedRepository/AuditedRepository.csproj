@@ -45,12 +45,15 @@
     <Compile Include="Interfaces\Models\IMaintenanceProperties.cs" />
     <Compile Include="Interfaces\Parsers\IParser.cs" />
     <Compile Include="Interfaces\Repositories\IRepository.cs" />
+    <Compile Include="Interfaces\Validators\IValidator.cs" />
     <Compile Include="Models\AuditEntity.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\MaintenanceProperties.cs" />
     <Compile Include="Parsers\ParserBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\EntityValidator.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuditedRepository.Enums;
 using AuditedRepository.Models;
+using AuditedRepository.Validators;
 
 namespace AuditedRepository.Parsers
 {
@@ -18,13 +19,25 @@ namespace AuditedRepository.Parsers
 
             return new AuditEntity()
             {
+                Id = Guid.NewGuid().ToString(),
+                CreatedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now,
+                Action = auditAction,
+                Type = entity.GetType().Name,
                 Data = stringifiedObj
             };
         }
 
         public virtual string Parse(T entity)
         {
-            return string.Format("{0} - {1}", entity.Id, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+            var validator = new EntityValidator<T>();
+            validator.Validate(entity);
+
+            return string.Format(
+                "{0} - {1}", 
+                entity.Id, 
+                DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")
+            );
         }
     }
 }
