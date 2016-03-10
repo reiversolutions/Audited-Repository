@@ -6,21 +6,13 @@ using AuditedRepository.Interfaces.Models;
 using AuditedRepository.Models;
 using AuditedRepository.Interfaces.Parsers;
 using Tests.AuditedRepository.Models;
+using Tests.AuditedRepository.Constants;
 
 namespace Tests.AuditedRepository
 {
     [TestClass]
     public class ParserBaseTests
     {
-        private IEntity EMPTY_ENTITY = new Entity();
-        private IEntity BASIC_ENTITY = new Entity()
-        {
-            Id = Guid.NewGuid().ToString(),
-            CreatedDate = DateTime.Now,
-            ModifiedDate = DateTime.Now,
-            IsArchived = false
-        };
-
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
         public void ParseBaseClass_null()
@@ -43,7 +35,7 @@ namespace Tests.AuditedRepository
             IParser<IEntity> parser = new MockParserBase<IEntity>();
             
             // Act
-            var result = parser.Parse(EMPTY_ENTITY);
+            var result = parser.Parse(MockObject.EMPTY_ENTITY);
 
             // Assert
         }
@@ -55,10 +47,23 @@ namespace Tests.AuditedRepository
             IParser<IEntity> parser = new MockParserBase<IEntity>();
             
             // Act
-            var result = parser.Parse(BASIC_ENTITY);
+            var result = parser.Parse(MockObject.BASIC_ENTITY);
 
             // Assert
-            Assert.IsTrue(result.Contains(BASIC_ENTITY.Id));
+            Assert.IsTrue(result.Contains(MockObject.BASIC_ENTITY.Id));
+        }
+
+        [TestMethod]
+        public void ParseBaseClass_BaseInherited()
+        {
+            // Assign
+            IParser<IEntity> parser = new MockParserBase<IEntity>();
+
+            // Act
+            var result = parser.Parse(MockObject.BASIC_MOCKENTITY);
+
+            // Assert
+            Assert.IsTrue(result.Contains(MockObject.BASIC_MOCKENTITY.Id));
         }
     }
 }

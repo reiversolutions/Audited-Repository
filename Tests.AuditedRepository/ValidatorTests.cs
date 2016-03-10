@@ -6,21 +6,14 @@ using AuditedRepository.Validators;
 using AuditedRepository.Interfaces.Models;
 using AuditedRepository.Interfaces.Validators;
 using AuditedRepository.Models;
+using Tests.AuditedRepository.Models;
+using Tests.AuditedRepository.Constants;
 
 namespace Tests.AuditedRepository
 {
     [TestClass]
     public class ValidatorTests
     {
-        private IEntity EMPTY_ENTITY = new Entity();
-        private IEntity BASIC_ENTITY = new Entity()
-        {
-            Id = Guid.NewGuid().ToString(),
-            CreatedDate = DateTime.Now,
-            ModifiedDate = DateTime.Now,
-            IsArchived = false
-        };
-
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
         public void ValidateClass_null()
@@ -43,7 +36,7 @@ namespace Tests.AuditedRepository
             IValidator<IEntity> validator = new EntityValidator<IEntity>();
 
             // Act
-            var result = validator.Validate(EMPTY_ENTITY);
+            var result = validator.Validate(MockObject.EMPTY_ENTITY);
 
             // Assert
         }
@@ -55,7 +48,20 @@ namespace Tests.AuditedRepository
             IValidator<IEntity> validator = new EntityValidator<IEntity>();
 
             // Act
-            var result = validator.Validate(BASIC_ENTITY);
+            var result = validator.Validate(MockObject.BASIC_ENTITY);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void ValidateClass_BaseInherited()
+        {
+            // Assign
+            IValidator<IEntity> validator = new EntityValidator<IEntity>();
+
+            // Act
+            var result = validator.Validate(MockObject.BASIC_MOCKENTITY);
 
             // Assert
             Assert.IsTrue(result);
